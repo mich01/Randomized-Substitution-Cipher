@@ -81,12 +81,13 @@ public class DChartCrypto
         }
         System.out.println("Plaintext: "+Input);
         Y_pos =1;
-
+        X_pos =1;
         System.out.println(" ");
         Encrypted_Result =  Encrypt(Plaintext, Direction);
         System.out.println("The Encrypted Message is: "+Encrypted_Result);
         CypherText = Encrypted_Result.split(" ");
         Y_pos=1;
+        X_pos=1;
         Plaintext_Result = Decrypt(CypherText,Direction_Selected);
         System.out.println("\nThe Decrypted message is: "+Plaintext_Result);
     }
@@ -145,16 +146,18 @@ public class DChartCrypto
         }
         return Temp;
     }
-    private static String Encrypt_Vertical(String[][] InputChart, String Key, int X)
+    private static String Encrypt_Vertical(String[][] InputChart, String Key, int Prev_Y)
     {
         String Temp =null;
         for(int i=0;i<CypherChart.length;i++)
         {
             if(InputChart[i][0].equals(Key))
             {
-                X_pos =X;
+                X_pos =Prev_Y;
                 Y_pos=i;
+
                 Temp = InputChart[i][X_pos];
+                System.out.println(Temp);
                 break;
             }
         }
